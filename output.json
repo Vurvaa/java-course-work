@@ -1,0 +1,177 @@
+[ {
+  "uuid" : "1d18f3cf-8fe2-4394-968c-d757e9389360",
+  "source" : "top_games",
+  "timeStamp" : "2026-03-16T21:32:20.591796500",
+  "data" : [ {
+    "slug" : "resident-evil-9-requiem",
+    "name" : "Resident Evil 9: Requiem",
+    "released" : "2026-02-27",
+    "rating" : 4.65,
+    "genres" : [ {
+      "id" : 4,
+      "name" : "Action",
+      "slug" : "action"
+    } ]
+  }, {
+    "slug" : "reanimal",
+    "name" : "Reanimal",
+    "released" : "2026-02-12",
+    "rating" : 4.24,
+    "genres" : [ {
+      "id" : 3,
+      "name" : "Adventure",
+      "slug" : "adventure"
+    } ]
+  }, {
+    "slug" : "nioh-3",
+    "name" : "Nioh 3",
+    "released" : "2026-02-06",
+    "rating" : 4.0,
+    "genres" : [ {
+      "id" : 4,
+      "name" : "Action",
+      "slug" : "action"
+    } ]
+  }, {
+    "slug" : "crimson-desert",
+    "name" : "Crimson Desert",
+    "released" : "2026-03-19",
+    "rating" : 3.88,
+    "genres" : [ {
+      "id" : 4,
+      "name" : "Action",
+      "slug" : "action"
+    }, {
+      "id" : 5,
+      "name" : "RPG",
+      "slug" : "role-playing-games-rpg"
+    } ]
+  }, {
+    "slug" : "prince-of-persia-the-sands-of-time-remake",
+    "name" : "Prince of Persia: The Sands of Time Remake",
+    "released" : "2026-12-31",
+    "rating" : 3.72,
+    "genres" : [ {
+      "id" : 4,
+      "name" : "Action",
+      "slug" : "action"
+    } ]
+  } ]
+}, {
+  "uuid" : "d2c90886-cb8c-4a49-b12f-09fb85b1405e",
+  "source" : "shop",
+  "timeStamp" : "2026-03-16T21:32:21.042119100",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "3",
+      "price" : "58.79",
+      "retailPrice" : "69.99",
+      "savings" : "16.002286"
+    }, {
+      "storeID" : "23",
+      "price" : "59.39",
+      "retailPrice" : "69.99",
+      "savings" : "15.145021"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "3c008ccd-9e36-4acc-9891-02d006182e5f",
+  "source" : "steam",
+  "timeStamp" : "2026-03-16T21:32:21.622101900",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0
+    }
+  } ]
+}, {
+  "uuid" : "4f531878-5f91-40a7-aace-8ea00875eac6",
+  "source" : "itad",
+  "timeStamp" : "2026-03-16T21:32:22.056093200",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 21,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 12065,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 183,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+} ]
