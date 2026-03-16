@@ -1,4 +1,4 @@
-package connector.models.custom.games;
+package models.custom.games;
 
 public record Genre(int id,
                     String name,

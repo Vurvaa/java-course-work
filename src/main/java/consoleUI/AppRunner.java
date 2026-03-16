@@ -1,6 +1,6 @@
 package consoleUI;
 
-import connector.models.service.config.ConfigData;
+import models.service.config.ConfigData;
 
 public abstract class AppRunner {
     protected final ConfigData config;

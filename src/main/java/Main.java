@@ -1,5 +1,5 @@
 import configReader.ConfigReader;
-import connector.models.service.config.ConfigData;
+import models.service.config.ConfigData;
 import connector.services.Server;
 import consoleUI.AppOptions;
 import consoleUI.AutomaticRunner;
@@ -9,41 +9,39 @@ import org.apache.commons.cli.*;
 
 public class Main {
     public static void main(String[] args) {
-        String programFormat = parseProgramFormat(args);
-
-        ConfigReader reader = new ConfigReader();
-        ConfigData config = reader.readConfig();
-
-        AppRunner appRunner = chooseProgramFormat(programFormat, config);
-        AppOptions options = appRunner.start();
-
-        Server server = new Server(options);
-        server.start();
-    }
-
-    private static String parseProgramFormat(String[] args) {
-        String defaultFormat = "automatic";
-
-        Option option = new Option("f", "format", true, "working format of the program");
-        option.setArgs(1);
-
-        Options options = new Options();
-        options.addOption(option);
-
-        CommandLineParser parser = new DefaultParser();
         try {
-            CommandLine cmd = parser.parse(options, args, false);
-            if (cmd.hasOption("f"))
-                defaultFormat = cmd.getOptionValue("f", defaultFormat);
+            String programFormat = parseProgramFormat(args);
 
-            if (cmd.getArgs().length > 0)
-                throw new ParseException("unknown parameters");
+            ConfigReader reader = new ConfigReader();
+            ConfigData config = reader.readConfig();
 
-        } catch(ParseException e) {
-            System.out.println(e.getMessage());
+            AppRunner appRunner = chooseProgramFormat(programFormat, config);
+            AppOptions options = appRunner.start();
+
+            Server server = new Server(options);
+            server.start();
+        } catch (ParseException e) {
+            System.out.println("сommand line error: " + e.getMessage());
+        } catch (IllegalStateException | NullPointerException | IllegalArgumentException e) {
+            System.out.println("configuration error: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("fatal system error: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        return defaultFormat;
+    }
+
+    private static String parseProgramFormat(String[] args) throws ParseException {
+        Options options = new Options();
+        options.addOption(new Option("f", "format", true, "working format of the program"));
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options, args);
+
+        if (cmd.getArgs().length > 0)
+            throw new ParseException("unknown parameters: " + String.join(", ", cmd.getArgs()));
+
+        return cmd.getOptionValue("f", "automatic");
     }
 
     private static AppRunner chooseProgramFormat(String format, ConfigData config) {
@@ -55,7 +53,7 @@ public class Main {
                 return new InteractiveRunner(config);
 
             default:
-                throw new IllegalArgumentException("unknown program format");
+                throw new IllegalStateException("unknown program format");
         }
     }
 }

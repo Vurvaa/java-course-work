@@ -1,4 +1,4 @@
-package connector.models.service.config;
+package models.service.config;
 
 import java.util.List;
 

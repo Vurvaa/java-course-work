@@ -1,4 +1,4 @@
-package connector.models.custom.itad;
+package models.custom.itad;
 
 public record Review(int score,
                      String source,

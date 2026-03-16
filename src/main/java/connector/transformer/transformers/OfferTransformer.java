@@ -1,7 +1,7 @@
 package connector.transformer.transformers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import connector.models.custom.offers.Offer;
+import models.custom.offers.Offer;
 import connector.transformer.Transformer;
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OfferTransformer implements Transformer<Offer> {
     @Override
-    public String getKey() {
+    public String getName() {
         return "shop";
     }
 
@@ -23,5 +23,18 @@ public class OfferTransformer implements Transformer<Offer> {
         }
 
         return null;
+    }
+
+    @Override
+    public List<String> getHeadersCSV() {
+        return List.of(
+                "shop_title",
+                "shop_steam_id",
+                "shop_best_price_ever",
+                "shop_store_id",
+                "shop_current_price",
+                "shop_retail_price",
+                "shop_savings"
+        );
     }
 }

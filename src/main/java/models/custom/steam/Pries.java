@@ -1,4 +1,4 @@
-package connector.models.custom.steam;
+package models.custom.steam;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

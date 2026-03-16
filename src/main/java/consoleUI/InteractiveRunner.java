@@ -1,15 +1,16 @@
 package consoleUI;
 
-import connector.models.service.config.ConfigData;
-import connector.models.service.config.NodeAPI;
-import org.w3c.dom.Node;
+import models.service.config.ConfigData;
+import models.service.config.NodeAPI;
+
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class InteractiveRunner extends AppRunner {
+    private final Scanner scanner = new Scanner(System.in);
+
     public InteractiveRunner(ConfigData config) {
         super(config);
     }
@@ -20,10 +21,10 @@ public class InteractiveRunner extends AppRunner {
 
         List<NodeAPI> apis = selectAPI();
         String outputFormat = selectOutputFormat();
-        String writeFormat = selectWriteFormat();
-        String viewFormat = selectFileVieFormat();
+        boolean isNewFile = selectWriteFormat();
+        String viewFormat = selectFileVieFormat(apis);
 
-        return new AppOptions(apis, outputFormat, writeFormat, viewFormat);
+        return new AppOptions(apis, outputFormat, isNewFile, viewFormat);
     }
 
     private void showAvailableAPI() {
@@ -33,9 +34,7 @@ public class InteractiveRunner extends AppRunner {
         for (var api : config.apis())
             System.out.printf("  %d. %s%n", count++, api.name());
 
-        System.out.println("0. Finish selection");
-
-        System.out.println("choose one or more options");
+        System.out.println("  0. Finish selection");
     }
 
     private List<NodeAPI> selectAPI() {
@@ -46,7 +45,6 @@ public class InteractiveRunner extends AppRunner {
 
         boolean running = true;
 
-        Scanner scanner = new Scanner(System.in);
         while (running) {
             showAvailableAPI();
             String input = scanner.nextLine();
@@ -55,13 +53,13 @@ public class InteractiveRunner extends AppRunner {
             try {
                 choice = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a number from the list.");
+                System.out.println("enter a number from the list.");
                 continue;
             }
 
             if (choice == 0) {
                 if (selectedApis.isEmpty()) {
-                    System.out.println("Please select at least one API.");
+                    System.out.println("select at least one API.");
                     continue;
                 }
                 running = false;
@@ -69,7 +67,7 @@ public class InteractiveRunner extends AppRunner {
             }
 
             if (choice < 1 || choice > availableApis.size()) {
-                System.out.println("Please enter a valid number from the list.");
+                System.out.println("enter a valid number from the list.");
                 continue;
             }
 
@@ -83,8 +81,6 @@ public class InteractiveRunner extends AppRunner {
             selectedApis.add(selectedApi);
             System.out.println(selectedApi + " added successfully.");
         }
-
-        scanner.close();
 
         return filterAPI(selectedApis);
     }
@@ -101,111 +97,84 @@ public class InteractiveRunner extends AppRunner {
     }
 
     private String selectOutputFormat() {
-        System.out.println("Available output format:");
+        System.out.println("Select output file format:");
         System.out.println("1. JSON");
         System.out.println("2. CSV");
 
-        String outputFormat = "";
+        while (true) {
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    return "JSON";
 
-        try (Scanner scanner = new Scanner(System.in)) {
-          int choice = scanner.nextInt();
-          switch (choice) {
-              case 1:
-                  outputFormat = "JSON";
-                  break;
-
-              case 2:
-                  outputFormat = "CSV";
-                  break;
-
-              default:
-                  throw new IllegalArgumentException("unexpected output format choice");
-          }
-        } catch (InputMismatchException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return outputFormat;
-    }
-
-    private String selectWriteFormat() {
-        System.out.println("Available output format:");
-        System.out.println("1. Create a new file");
-        System.out.println("2. Append to existing file");
-
-        String writeFormat = "";
-
-        try (Scanner scanner = new Scanner(System.in)) {
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    writeFormat = "new";
-                    break;
-
-                case 2:
-                    writeFormat = "append";
-                    break;
+                case "2":
+                    return "CSV";
 
                 default:
-                    throw new IllegalArgumentException("unexpected output format choice");
+                    System.out.println("Invalid choice. Please enter 1 for JSON or 2 for CSV.");
             }
-        } catch (InputMismatchException e) {
-            System.out.println(e.getMessage());
         }
-
-        return writeFormat;
     }
 
-    private String selectFileVieFormat() {
-        System.out.println("Available output format:");
-        System.out.println("1. Create a new file");
-        System.out.println("2. Append to existing file");
+    private boolean selectWriteFormat() {
+        System.out.println("Select file write mode:");
+        System.out.println("1. Overwrite (create a new file)");
+        System.out.println("2. Append (add to existing file)");
 
-        String viewFormat = "";
+        while (true) {
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    return true;
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    viewFormat = "full";
-                    break;
-
-                case 2:
-                    viewFormat = "api: " + chooseAPI();
-                    showAvailableAPI();
-
+                case "2":
+                    return false;
 
                 default:
-                    throw new IllegalArgumentException("unexpected output format choice");
+                    System.out.println("Invalid choice. Please enter 1 for Overwrite or 2 for Append.");
             }
-        } catch (InputMismatchException e) {
-            System.out.println(e.getMessage());
-        }
-
-        return viewFormat;
-    }
-
-    private String chooseAPI() {
-        var availableApis = config.apis();
-        showAvailableAPI();
-
-        System.out.print("Enter API number: ");
-        Scanner scanner = new Scanner(System.in);
-
-        try {
-            int choice = Integer.parseInt(scanner.nextLine());
-
-            if (choice < 1 || choice > availableApis.size()) {
-                throw new IllegalArgumentException("index out of bounds: " + choice);
-            }
-
-            String selected = availableApis.get(choice - 1).url();
-            System.out.println("Selected: " + selected);
-            return selected;
-
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("input is not a valid number", e);
         }
     }
 
+    private String selectFileVieFormat(List<NodeAPI> selectedApis) {
+        System.out.println("Select data view mode:");
+        System.out.println("1. Full (full file contents)");
+        System.out.println("2. Filtered (specific API only)");
+
+        while (true) {
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    return "full";
+                case "2":
+                    String apiName = chooseAPI(selectedApis);
+                    return "api: " + apiName;
+                default:
+                    System.out.println("Invalid choice. Please enter 1 or 2.");
+            }
+        }
+    }
+
+    private String chooseAPI(List<NodeAPI> selectedApis) {
+        while (true) {
+            System.out.println("Select one of the previously chosen APIs:");
+            for (int i = 0; i < selectedApis.size(); i++) {
+                System.out.printf("  %d. %s%n", i + 1, selectedApis.get(i).name());
+            }
+
+            System.out.print("Enter number: ");
+            String input = scanner.nextLine();
+            try {
+                int choice = Integer.parseInt(input);
+                if (choice >= 1 && choice <= selectedApis.size()) {
+                    String name = selectedApis.get(choice - 1).name();
+                    System.out.println("Selected for view: " + name);
+                    return name;
+                }
+                System.out.println("Invalid number. Please choose from the list above.");
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+    }
 }

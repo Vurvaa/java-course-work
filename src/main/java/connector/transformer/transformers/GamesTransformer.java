@@ -3,7 +3,7 @@ package connector.transformer.transformers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import connector.models.custom.games.Game;
+import models.custom.games.Game;
 import connector.transformer.Transformer;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GamesTransformer implements Transformer<Game> {
     @Override
-    public String getKey() {
+    public String getName() {
         return "top_games";
     }
 
@@ -31,5 +31,16 @@ public class GamesTransformer implements Transformer<Game> {
 
             throw new IllegalStateException("error with reading steam response", e);
         }
+    }
+
+    @Override
+    public List<String> getHeadersCSV() {
+        return List.of(
+                "top_games_slug",
+                "top_games_name",
+                "top_games_released",
+                "top_games_rating",
+                "top_games_genre_name"
+        );
     }
 }

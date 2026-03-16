@@ -2,7 +2,7 @@ package configReader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import connector.models.service.config.ConfigData;
+import models.service.config.ConfigData;
 
 import java.io.File;
 import java.io.IOException;

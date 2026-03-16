@@ -2,7 +2,7 @@ package connector.transformer.transformers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import connector.models.custom.steam.GameData;
+import models.custom.steam.GameData;
 import connector.transformer.Transformer;
 
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SteamTransformer implements Transformer<GameData> {
     @Override
-    public String getKey() {
+    public String getName() {
         return "steam";
     }
 
@@ -31,5 +31,18 @@ public class SteamTransformer implements Transformer<GameData> {
         }
 
         return null;
+    }
+
+    @Override
+    public List<String> getHeadersCSV() {
+        return List.of(
+                "steam_appid",
+                "steam_name",
+                "steam_type",
+                "steam_description",
+                "steam_currency",
+                "steam_initial_price",
+                "steam_discount"
+        );
     }
 }

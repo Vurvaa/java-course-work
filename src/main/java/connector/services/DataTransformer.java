@@ -1,7 +1,7 @@
 package connector.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import connector.models.service.notes.ModelJSON;
+import models.service.notes.CommonModel;
 import connector.transformer.*;
 import connector.transformer.transformers.GamesTransformer;
 import connector.transformer.transformers.ITADTransformer;
@@ -24,28 +24,35 @@ public class DataTransformer {
                                 new SteamTransformer());
     }
 
-    public ModelJSON<?> transformInJSON(byte[] body, String nameAPI) {
+    public CommonModel<?> transform(byte[] body, String nameAPI) {
         if (body == null || nameAPI == null)
             throw new IllegalArgumentException("response body or API name can not be null");
 
         LocalDateTime createdTime = LocalDateTime.now();
 
-        return new ModelJSON<>(UUID.randomUUID(), createdTime.toString(), nameAPI, transformData(body, nameAPI));
+        return new CommonModel<>(UUID.randomUUID(), createdTime.toString(), nameAPI, transformData(body, nameAPI));
     }
 
-    public void transformInCSV() {
+    public Transformer<?> getTransformerForName(String sourceName) {
+        for (Transformer<?> transformer : transformers) {
+            if (transformer.getName().equalsIgnoreCase(sourceName)) {
+                return transformer;
+            }
+        }
 
+        throw new IllegalArgumentException("no transformer found for source: " + sourceName);
     }
+
 
     private List<?> transformData(byte[] body, String nameAPI) {
         List<?> data = null;
         for (var transformer : transformers) {
-            if (nameAPI.equals(transformer.getKey()))
+            if (nameAPI.equals(transformer.getName()))
                 data = transformer.handleResponseBody(body, mapper);
         }
 
         if (data == null)
-            throw new IllegalArgumentException("unknown API or transformer");
+            throw new IllegalStateException("unknown API or transformer");
 
         return data;
     }

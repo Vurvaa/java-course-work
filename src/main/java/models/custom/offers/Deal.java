@@ -1,4 +1,4 @@
-package connector.models.custom.offers;
+package models.custom.offers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
