@@ -26,10 +26,12 @@ public record GameData(String type,
             map.put("steam_currency", price_overview.currency());
             map.put("steam_initial_price", String.valueOf(price_overview.initial()));
             map.put("steam_discount", price_overview.discount_percent() + "%");
+            map.put("steam_final_formatted", price_overview.final_formatted());
         } else {
             map.put("steam_currency", "");
             map.put("steam_initial_price", "");
             map.put("steam_discount", "");
+            map.put("steam_final_formatted", "");
         }
 
         return List.of(map);

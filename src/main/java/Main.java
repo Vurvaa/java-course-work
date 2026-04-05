@@ -28,7 +28,6 @@ public class Main {
             System.out.println("fatal system error: " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 
     private static String parseProgramFormat(String[] args) throws ParseException {

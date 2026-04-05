@@ -42,7 +42,8 @@ public class SteamTransformer implements Transformer<GameData> {
                 "steam_description",
                 "steam_currency",
                 "steam_initial_price",
-                "steam_discount"
+                "steam_discount",
+                "steam_steam_final_formatted"
         );
     }
 }

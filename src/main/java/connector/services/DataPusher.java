@@ -53,13 +53,31 @@ public class DataPusher {
         models.add(data);
     }
 
+    public void writeCSV(List<Map<String, String>> allRows, List<String> headers) {
+        try (FileWriter out = new FileWriter(CSV_FILE, false);
+             CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT.builder()
+                     .setHeader(headers.toArray(new String[0]))
+                     .build())) {
+
+            for (Map<String, String> row : allRows) {
+                List<Object> record = new ArrayList<>();
+                for (String header : headers) {
+                    record.add(row.getOrDefault(header, ""));
+                }
+                printer.printRecord(record);
+            }
+        } catch (IOException e) {
+            System.err.println("error with writing CSV: " + e.getMessage());
+        }
+    }
+
     public List<Map<String, String>> readCsvAsMaps() {
         List<Map<String, String>> data = new ArrayList<>();
 
         File file = new File(CSV_FILE);
         if (!file.exists() || file.length() == 0) return data;
 
-        try (Reader reader = new FileReader(file, StandardCharsets.UTF_8);
+        try (Reader reader = new FileReader(file);
              CSVParser parser = CSVFormat.DEFAULT.builder()
                      .setHeader()
                      .setSkipHeaderRecord(true)
@@ -78,23 +96,5 @@ public class DataPusher {
         }
 
         return data;
-    }
-
-    public void writeCSV(List<Map<String, String>> allRows, List<String> headers) {
-        try (FileWriter out = new FileWriter(CSV_FILE, false);
-             CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT.builder()
-                     .setHeader(headers.toArray(new String[0]))
-                     .build())) {
-
-            for (Map<String, String> row : allRows) {
-                List<Object> record = new ArrayList<>();
-                for (String header : headers) {
-                    record.add(row.getOrDefault(header, ""));
-                }
-                printer.printRecord(record);
-            }
-        } catch (IOException e) {
-            System.err.println("error with writing CSV: " + e.getMessage());
-        }
     }
 }

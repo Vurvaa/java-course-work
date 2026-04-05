@@ -147,7 +147,7 @@ public class InteractiveRunner extends AppRunner {
                 case "1":
                     return "full";
                 case "2":
-                    String apiName = chooseAPI(selectedApis);
+                    String apiName = selectViewAPI(selectedApis);
                     return "api: " + apiName;
                 default:
                     System.out.println("Invalid choice. Please enter 1 or 2.");
@@ -155,7 +155,7 @@ public class InteractiveRunner extends AppRunner {
         }
     }
 
-    private String chooseAPI(List<NodeAPI> selectedApis) {
+    private String selectViewAPI(List<NodeAPI> selectedApis) {
         while (true) {
             System.out.println("Select one of the previously chosen APIs:");
             for (int i = 0; i < selectedApis.size(); i++) {

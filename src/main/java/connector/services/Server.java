@@ -2,7 +2,6 @@ package connector.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import connector.transformer.Transformer;
 import models.custom.Mappable;
 import models.service.config.NodeAPI;
 import models.service.notes.CommonModel;

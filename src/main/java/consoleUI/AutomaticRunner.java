@@ -21,11 +21,8 @@ public class AutomaticRunner extends AppRunner {
         for (var api : config.apis())
             System.out.printf("  %d. %s%n", count++, api.name());
 
-
         System.out.printf("%nConfigured output format: %s%n", config.outputFormat());
 
         return new AppOptions(config.apis(), config.outputFormat(), IS_NEW_FILE, VIEW_FORMAT);
     }
-
-
 }
