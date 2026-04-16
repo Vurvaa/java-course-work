@@ -16,10 +16,12 @@ public class Main {
             ConfigData config = reader.readConfig();
 
             AppRunner appRunner = chooseProgramFormat(programFormat, config);
-            AppOptions options = appRunner.start();
+            AppOptions options = appRunner.registrAppOptions();
 
             Server server = new Server(options);
-            server.start();
+
+            handleCommands(appRunner, server);
+
         } catch (ParseException e) {
             System.out.println("сommand line error: " + e.getMessage());
         } catch (IllegalStateException | NullPointerException | IllegalArgumentException e) {
@@ -27,6 +29,34 @@ public class Main {
         } catch (Exception e) {
             System.out.println("fatal system error: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    private static void handleCommands(AppRunner appRunner, Server server) {
+        System.out.println("\nApplication is ready. ");
+        appRunner.printInfo();
+
+        boolean isRunning = true;
+        while (isRunning) {
+            String command = appRunner.getCommand();
+
+            switch (command) {
+                case "start":
+                    server.start();
+                    break;
+
+                case "stop":
+                    server.stop();
+                    break;
+
+                case "\\q":
+                    server.shutdown();
+                    isRunning = false;
+                    break;
+
+                default:
+                    appRunner.printInfo();
+            }
         }
     }
 

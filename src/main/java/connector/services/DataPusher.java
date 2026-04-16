@@ -5,17 +5,14 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import models.service.notes.CommonModel;
+import models.service.notes.CsvContent;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DataPusher {
     private static final String JSON_FILE = "output.json";
@@ -24,58 +21,91 @@ public class DataPusher {
     private final ObjectMapper mapper = new ObjectMapper();
     private final ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
-    private List<CommonModel<?>> models = new ArrayList<>();
-
-    public void writeJSON(boolean isNewFile) {
+    public synchronized void pushJSON(CommonModel<?> data) {
         File file = new File(JSON_FILE);
         List<CommonModel<?>> dataToWrite = new ArrayList<>();
 
         try {
-            if (!isNewFile && file.exists() && file.length() > 0) {
-                List<CommonModel<?>> existingData = mapper.readValue(file, new TypeReference<>() {});
+            if (file.exists() && file.length() > 0) {
+                List<CommonModel<?>> existingData =
+                        mapper.readValue(file, new TypeReference<>() {});
                 dataToWrite.addAll(existingData);
             }
 
-            dataToWrite.addAll(models);
+            dataToWrite.add(data);
 
             writer.writeValue(file, dataToWrite);
 
-            models.clear();
         } catch (IOException e) {
-            System.err.println("JSON error: I/O failure while saving data: " + e.getMessage());
+            System.out.println("JSON error: I/O failure while saving data: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            System.err.println("JSON error: An unexpected system error occurred: " + e.getMessage());
+            System.out.println("JSON error: An unexpected system error occurred: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public void saveJSON(CommonModel<?> data) {
-        models.add(data);
-    }
+    public synchronized void pushCSV(List<Map<String, String>> newRows, List<String> newHeaders) {
+        File file = new File(CSV_FILE);
 
-    public void writeCSV(List<Map<String, String>> allRows, List<String> headers) {
-        try (FileWriter out = new FileWriter(CSV_FILE, false);
-             CSVPrinter printer = new CSVPrinter(out, CSVFormat.DEFAULT.builder()
-                     .setHeader(headers.toArray(new String[0]))
-                     .build())) {
+        List<Map<String, String>> allRows = new ArrayList<>();
+        List<String> existingHeaders = new ArrayList<>();
 
-            for (Map<String, String> row : allRows) {
-                List<Object> record = new ArrayList<>();
-                for (String header : headers) {
-                    record.add(row.getOrDefault(header, ""));
-                }
-                printer.printRecord(record);
+        try {
+            if (file.exists() && file.length() > 0) {
+                CsvContent existingContent = readCsvContent();
+                allRows.addAll(existingContent.rows());
+                existingHeaders.addAll(existingContent.headers());
             }
-        } catch (IOException e) {
-            System.err.println("error with writing CSV: " + e.getMessage());
+
+            List<String> finalHeaders = buildHeaders(existingHeaders, newHeaders);
+
+            allRows.addAll(newRows);
+
+            writeCSV(allRows, finalHeaders);
+        } catch (Exception e) {
+            System.out.println("CSV error: failed to push data: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    public List<Map<String, String>> readCsvAsMaps() {
-        List<Map<String, String>> data = new ArrayList<>();
+    public void prepareFile(String outputFormat, boolean isNewFile) {
+        if (!isNewFile)
+            return;
+
+        if ("JSON".equals(outputFormat))
+            prepareJsonFile();
+        else if ("CSV".equals(outputFormat))
+            prepareCsvFile();
+    }
+
+    private List<String> buildHeaders(List<String> existingHeaders, List<String> newHeaders) {
+        LinkedHashSet<String> result = new LinkedHashSet<>();
+
+        result.add("id");
+        result.add("source");
+        result.add("timestamp");
+
+        for (String header : existingHeaders) {
+            if (!header.equals("id") && !header.equals("source") && !header.equals("timestamp"))
+                result.add(header);
+        }
+
+        for (String header : newHeaders)
+            if (!header.equals("id") && !header.equals("source") && !header.equals("timestamp")) {
+                result.add(header);
+        }
+
+        return new ArrayList<>(result);
+    }
+
+    private CsvContent readCsvContent() {
+        List<Map<String, String>> rows = new ArrayList<>();
+        List<String> headers = new ArrayList<>();
 
         File file = new File(CSV_FILE);
-        if (!file.exists() || file.length() == 0) return data;
+        if (!file.exists() || file.length() == 0)
+            return new CsvContent(headers, rows);
 
         try (Reader reader = new FileReader(file);
              CSVParser parser = CSVFormat.DEFAULT.builder()
@@ -84,17 +114,64 @@ public class DataPusher {
                      .build()
                      .parse(reader)) {
 
-            for (CSVRecord record : parser)
-                data.add(new HashMap<>(record.toMap()));
+            headers.addAll(parser.getHeaderMap().keySet());
 
-        } catch (FileNotFoundException e) {
-            System.out.println("CSV Error: The file was moved or deleted during process: " + e.getMessage());
+            for (CSVRecord record : parser)
+                rows.add(new HashMap<>(record.toMap()));
+
         } catch (IOException e) {
-            System.out.println("CSV Error: Critical I/O failure while reading: " + e.getMessage());
+            System.err.println("CSV error with reading: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
-            System.out.println("CSV Error: An unexpected error occurred: " + e.getMessage());
+            System.err.println("CSV unexpected error: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        return data;
+        return new CsvContent(headers, rows);
+    }
+
+    private void writeCSV(List<Map<String, String>> allRows, List<String> headers) {
+        try (FileWriter out = new FileWriter(CSV_FILE, false);
+             CSVPrinter printer = new CSVPrinter(
+                     out,
+                     CSVFormat.DEFAULT.builder()
+                             .setHeader(headers.toArray(new String[0]))
+                             .build()
+             )) {
+
+            for (Map<String, String> row : allRows) {
+                List<String> record = new ArrayList<>();
+
+                for (String header : headers)
+                    record.add(row.getOrDefault(header, ""));
+
+                printer.printRecord(record);
+            }
+        } catch (IOException e) {
+            System.err.println("CSV error with writing: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void prepareJsonFile() {
+        File file = new File(JSON_FILE);
+
+        try {
+            writer.writeValue(file, new ArrayList<>());
+        } catch (IOException e) {
+            System.err.println("JSON error: can not prepare file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void prepareCsvFile() {
+        File file = new File(CSV_FILE);
+
+        try (FileWriter out = new FileWriter(file, false)) {
+            out.write("");
+        } catch (IOException e) {
+            System.err.println("CSV error: can not prepare file: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

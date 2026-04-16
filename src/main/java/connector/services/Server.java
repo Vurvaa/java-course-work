@@ -2,6 +2,8 @@ package connector.services;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import connector.concurrency.ApiHandler;
+import connector.concurrency.Controller;
 import models.custom.Mappable;
 import models.service.config.NodeAPI;
 import models.service.notes.CommonModel;
@@ -13,97 +15,78 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.*;
 import java.util.*;
 
-public class Server {
+public class Server implements ApiHandler {
+    private final AppOptions options;
     private final Connector connector;
     private final DataTransformer transformer;
     private final DataPusher pusher;
-    private final AppOptions options;
+    private final Controller controller;
 
     public Server(AppOptions options) {
         if (options == null) throw new NullPointerException("app options can not be null");
 
+        this.options = options;
         this.connector = new Connector();
         this.transformer = new DataTransformer();
         this.pusher = new DataPusher();
-        this.options = options;
+        this.controller = new Controller(options.maxTaskNum(), this);
     }
 
     public void start() {
-        switch (options.outputFormat()) {
-            case "JSON":
-                handleJSON();
-                break;
-
-            case "CSV":
-                handleCSV();
-                break;
-
-            default:
-                throw new IllegalStateException("unknown working format");
-        }
-
-        viewDisplay();
-
-        System.out.println("\n----Done----");
+        if (!controller.isRunning()) {
+            pusher.prepareFile(options.outputFormat(), options.isNewFile());
+            controller.startPoll(options.apis(), options.poolingInterval());
+        } else
+            System.out.println("Polling has already been started");
     }
 
-    private void handleJSON() {
-        try {
-            var apis = options.apis();
-            for (NodeAPI api : apis) {
-                byte[] body = connector.getResponseBody(api.url());
-
-                var data = transformer.transform(body, api.name());
-
-                pusher.saveJSON(data);
-            }
-
-            pusher.writeJSON(options.isNewFile());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void stop() {
+        if (controller.isRunning()) {
+            controller.stopPoll();
+            viewDisplay();
+        } else
+            System.out.println("Polling has already been stopped");
     }
 
-    private void handleCSV() {
-        try {
-            List<Map<String, String>> allRows = new ArrayList<>();
-            Set<String> headerSet = new LinkedHashSet<>(List.of("id", "source", "timestamp"));
+    public void shutdown() {
+        controller.shutdown();
+    }
 
-            if (!options.isNewFile()) {
-                allRows.addAll(pusher.readCsvAsMaps());
-                if (!allRows.isEmpty()) {
-                    headerSet.addAll(allRows.get(0).keySet());
+    @Override
+    public void handleApi(NodeAPI api) throws Exception {
+        byte[] body = connector.getResponseBody(api.url());
+        var commonModel = transformer.transform(body, api.name());
+
+        if (options.outputFormat().equals("JSON"))
+            pusher.pushJSON(commonModel);
+        else if (options.outputFormat().equals("CSV"))
+            handleAndPushCSV(commonModel, api.name());
+        else
+            throw new IllegalArgumentException("unknown working format");
+    }
+
+    private void handleAndPushCSV(CommonModel<?> commonModel, String apiName) {
+        var specificTransformer = transformer.getTransformerForName(apiName);
+
+        List<String> headers = new ArrayList<>(List.of("id", "source", "timestamp"));
+        headers.addAll(specificTransformer.getHeadersCSV());
+
+        List<Map<String, String>> currentApiRows = new ArrayList<>();
+
+        for (Object item : commonModel.getData()) {
+            if (item instanceof Mappable m) {
+                for (Map<String, String> originalRowMap : m.toCsvMaps()) {
+                    Map<String, String> rowMap = new HashMap<>(originalRowMap);
+                    rowMap.put("id", commonModel.getUUID().toString());
+                    rowMap.put("source", commonModel.getSource());
+                    rowMap.put("timestamp", commonModel.getTimeStamp().toString());
+
+                    currentApiRows.add(rowMap);
                 }
             }
-
-            for (var api : options.apis()) {
-                var specificTransformer = transformer.getTransformerForName(api.name());
-
-                headerSet.addAll(specificTransformer.getHeadersCSV());
-
-                byte[] body = connector.getResponseBody(api.url());
-                var commonModel = transformer.transform(body, api.name());
-
-                for (Object item : commonModel.getData()) {
-                    if (item instanceof Mappable m) {
-                        for (Map<String, String> originalRowMap : m.toCsvMaps()) {
-                            Map<String, String> rowMap = new HashMap<>(originalRowMap);
-
-                            rowMap.put("id", commonModel.getUUID().toString());
-                            rowMap.put("source", commonModel.getSource());
-                            rowMap.put("timestamp", commonModel.getTimeStamp().toString());
-
-                            allRows.add(rowMap);
-                        }
-                    }
-                }
-            }
-
-            pusher.writeCSV(allRows, new ArrayList<>(headerSet));
-
-        } catch (IOException e) {
-            System.err.println("CSV operation failed: " + e.getMessage());
         }
+
+        pusher.pushCSV(currentApiRows, headers);
     }
 
     private void viewDisplay() {
@@ -138,7 +121,7 @@ public class Server {
         }
     }
 
-    public void printCSVPreview(String target) {
+    private void printCSVPreview(String target) {
         File file = new File("output.csv");
         if (!file.exists() || file.length() == 0) {
             System.out.println("No data available to display.");
