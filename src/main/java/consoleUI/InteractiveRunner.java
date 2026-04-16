@@ -16,15 +16,39 @@ public class InteractiveRunner extends AppRunner {
     }
 
     @Override
-    public AppOptions start() {
+    public String getCommand() {
+        if (scanner.hasNextLine()) {
+            String command = scanner.nextLine().trim();
+
+            boolean isCorrectCommand = command.equals("start") || command.equals("\\q") || command.equals("stop");
+            if (isCorrectCommand) {
+                System.out.printf("command[%s] accepted\n", command);
+                return command;
+            }
+            else
+                return "unknown";
+        }
+
+        return "\\q";
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("Enter 'start' to begin polling, 'stop' to pause, or '\\q' to exit.");
+    }
+
+    @Override
+    public AppOptions registrAppOptions() {
         System.out.println("- - - Game Data Aggregator - - -");
 
         List<NodeAPI> apis = selectAPI();
         String outputFormat = selectOutputFormat();
         boolean isNewFile = selectWriteFormat();
         String viewFormat = selectFileVieFormat(apis);
+        int maxTaskNum = selectMaxTaskNum();
+        int interval = selectPollingInterval();
 
-        return new AppOptions(apis, outputFormat, isNewFile, viewFormat);
+        return new AppOptions(apis, outputFormat, isNewFile, viewFormat, maxTaskNum, interval);
     }
 
     private void showAvailableAPI() {
@@ -175,6 +199,43 @@ public class InteractiveRunner extends AppRunner {
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number.");
             }
+        }
+    }
+
+    private int selectMaxTaskNum() {
+        System.out.println("Enter max task number for concurrency:");
+        int num = 1;
+        while (true) {
+            if (scanner.hasNextLine()) {
+                String scan = scanner.nextLine();
+
+                num = Integer.parseInt(scan);
+                if (num > 0 && num < 17)
+                    return num;
+                else
+                    System.out.println("Number should be in range 1 to 16");
+            }
+            else
+                System.out.println("Please, enter the number");
+
+        }
+    }
+
+    private int selectPollingInterval() {
+        System.out.println("Enter polling interval (in seconds) for concurrency:");
+        int num = 1;
+        while (true) {
+            if (scanner.hasNextLine()) {
+                String scan = scanner.nextLine();
+
+                num = Integer.parseInt(scan);
+                if (num >= 10 && num <= 86400)
+                    return num;
+                else
+                    System.out.println("Number should be in range 10 to 86400 seconds");
+            }
+            else
+                System.out.println("Please, enter the number");
         }
     }
 }

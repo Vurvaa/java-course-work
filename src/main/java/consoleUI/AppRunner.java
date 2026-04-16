@@ -12,5 +12,9 @@ public abstract class AppRunner {
         this.config = config;
     }
 
-    public abstract AppOptions start();
+    public abstract String getCommand();
+
+    public abstract AppOptions registrAppOptions();
+
+    public abstract void printInfo();
 }
