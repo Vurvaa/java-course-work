@@ -12,10 +12,7 @@ public class Connector {
     private final OkHttpClient client;
 
     public Connector() {
-        client = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .build();
+        client = new OkHttpClient();
     }
 
     public byte[] getResponseBody(String url) throws IOException {

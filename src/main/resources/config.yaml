@@ -6,4 +6,4 @@ apis:
 
 outputFormat: JSON
 maxTaskNum: 3
-pollingInterval: 1
+pollingInterval: 10

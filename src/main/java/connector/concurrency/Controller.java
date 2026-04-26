@@ -1,7 +1,7 @@
 package connector.concurrency;
 
 import models.service.config.NodeAPI;
-import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -12,9 +12,12 @@ public class Controller {
     private static final int MIN_POLL_INTERVAL_SECONDS = 0;
     private static final int MAX_POLL_INTERVAL_SECONDS = 86400;
 
+    private static final int CHECK_DELAY_MILLISECONDS = 100;
+
     private final ScheduledExecutorService scheduler;
     private final ApiHandler handler;
     private final List<ScheduledFuture<?>> activeTasks;
+    private final Hashtable<String, Long> lastPollTimeTable;
 
     private boolean running;
 
@@ -27,7 +30,8 @@ public class Controller {
 
         this.scheduler = Executors.newScheduledThreadPool(nThreads);
         this.handler = handler;
-        this.activeTasks = new ArrayList<>();
+        this.activeTasks = new CopyOnWriteArrayList<>();
+        this.lastPollTimeTable = new Hashtable<>();
         this.running = false;
     }
 
@@ -47,21 +51,45 @@ public class Controller {
         }
 
         activeTasks.clear();
+        lastPollTimeTable.clear();
 
+        int id = 1;
         for (NodeAPI api : apis) {
-            ApiTask task = new ApiTask(handler, api);
-
+            String apiKey = api.name() + id++;
             ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(
-                    task,
+                    new ApiTask(this, api, apiKey, intervalSeconds),
                     0,
-                    0,
-                    TimeUnit.SECONDS
+                    CHECK_DELAY_MILLISECONDS,
+                    TimeUnit.MILLISECONDS
             );
 
             activeTasks.add(future);
         }
 
         running = true;
+    }
+
+    public boolean canHandleApi(String api, int intervalSeconds) {
+        if (intervalSeconds == 0)
+            return true;
+
+        long now = System.currentTimeMillis();
+        long intervalMillis = intervalSeconds * 1000L;
+
+        synchronized (lastPollTimeTable) {
+            long last = lastPollTimeTable.getOrDefault(api, 0L);
+
+            if (now - last < intervalMillis)
+                return false;
+
+            lastPollTimeTable.put(api, now);
+            return true;
+        }
+    }
+
+    public void handleApi(NodeAPI api) throws Exception {
+
+        handler.handleApi(api);
     }
 
     public void stopPoll() {
@@ -74,6 +102,7 @@ public class Controller {
             future.cancel(false);
 
         activeTasks.clear();
+        lastPollTimeTable.clear();
         running = false;
     }
 
@@ -87,6 +116,7 @@ public class Controller {
 
         } catch (InterruptedException e) {
             scheduler.shutdownNow();
+            Thread.currentThread().interrupt();
             System.out.println("shutdown program has been fail: " + e.getMessage());
         }
     }
