@@ -1,8 +1,12 @@
 package connector.concurrency;
 
 import models.service.config.NodeAPI;
-import java.util.Hashtable;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
 
 public class Controller {
@@ -15,9 +19,9 @@ public class Controller {
     private static final int CHECK_DELAY_MILLISECONDS = 100;
 
     private final ScheduledExecutorService scheduler;
-    private final ApiHandler handler;
     private final List<ScheduledFuture<?>> activeTasks;
-    private final Hashtable<String, Long> lastPollTimeTable;
+    private final Map<String, Long> lastPollTimeTable;
+    private final ApiHandler handler;
 
     private boolean running;
 
@@ -30,8 +34,8 @@ public class Controller {
 
         this.scheduler = Executors.newScheduledThreadPool(nThreads);
         this.handler = handler;
-        this.activeTasks = new CopyOnWriteArrayList<>();
-        this.lastPollTimeTable = new Hashtable<>();
+        this.activeTasks = new ArrayList<>();
+        this.lastPollTimeTable = new HashMap<>();
         this.running = false;
     }
 
@@ -53,11 +57,24 @@ public class Controller {
         activeTasks.clear();
         lastPollTimeTable.clear();
 
-        int id = 1;
+        int id = 0;
         for (NodeAPI api : apis) {
             String apiKey = api.name() + id++;
             ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(
-                    new ApiTask(this, api, apiKey, intervalSeconds),
+                    () -> {
+                        if (!canHandleApi(apiKey, intervalSeconds))
+                            return;
+
+                        try {
+                            handler.handleApi(api);
+                        } catch (IOException e) {
+                            System.out.println("failed receiving a response from the api: " + e.getMessage());
+                            e.printStackTrace();
+                        } catch (Exception e) {
+                            System.out.println("api processing failed: " + e.getMessage());
+                            e.printStackTrace();
+                        }
+                    },
                     0,
                     CHECK_DELAY_MILLISECONDS,
                     TimeUnit.MILLISECONDS
@@ -85,11 +102,6 @@ public class Controller {
             lastPollTimeTable.put(api, now);
             return true;
         }
-    }
-
-    public void handleApi(NodeAPI api) throws Exception {
-
-        handler.handleApi(api);
     }
 
     public void stopPoll() {

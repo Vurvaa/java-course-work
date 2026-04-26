@@ -1,7 +1,78 @@
 [ {
-  "uuid" : "12f84ab6-ea48-4b99-a0b7-0bc9598ee334",
+  "uuid" : "e64f45cf-378a-4309-8cbb-a25d423a2d0a",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:52:08.479913100",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "f4a106c7-ba5e-4543-b674-82f4516ea6b0",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:07.546866100",
+  "timeStamp" : "2026-04-26T20:52:08.574956500",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -15,71 +86,80 @@
     }
   } ]
 }, {
-  "uuid" : "43ba31a2-7135-429e-a511-95015e82a165",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:40:07.737352600",
+  "uuid" : "283d2cca-9a9e-42b2-b631-563c8536c8e3",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:52:17.718275100",
   "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
     }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
     } ]
   } ]
 }, {
-  "uuid" : "d5650b22-c15f-48fe-b487-997bd16e56dd",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:40:16.905026300",
-  "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
-    }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
-    }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
-    }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
-    } ]
-  } ]
-}, {
-  "uuid" : "85dd2da7-7ff1-495d-bc6b-33f970be8cf2",
+  "uuid" : "62da1fd9-bc42-449f-812e-e1ac5dd79a03",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:17.079230600",
+  "timeStamp" : "2026-04-26T20:52:18.104957300",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -93,40 +173,80 @@
     }
   } ]
 }, {
-  "uuid" : "b2637bbb-6f00-4381-b258-8d69526f44b6",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:40:26.962292100",
+  "uuid" : "9d1dba87-7c8f-447a-90d9-d069fbb35f3f",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:52:27.826955700",
   "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
     }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
     } ]
   } ]
 }, {
-  "uuid" : "bb963b3e-b396-4730-86a9-bd0f0f56dabb",
+  "uuid" : "bf3edd58-5025-4139-b362-72f036ce7375",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:27.183114200",
+  "timeStamp" : "2026-04-26T20:52:28.180481",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -140,40 +260,9 @@
     }
   } ]
 }, {
-  "uuid" : "d817be88-a2ab-4c35-b8fc-6330fc471573",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:40:36.927491700",
-  "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
-    }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
-    }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
-    }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
-    } ]
-  } ]
-}, {
-  "uuid" : "cf23e481-9809-4642-ad40-d09811c832f3",
+  "uuid" : "43bc2066-aea0-49ae-bad3-6ac4bc9b3eff",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:37.120103800",
+  "timeStamp" : "2026-04-26T20:52:38.275968800",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -187,9 +276,9 @@
     }
   } ]
 }, {
-  "uuid" : "6dc9a820-f997-4b92-884a-7b9e82696dd8",
+  "uuid" : "0f985257-3fc5-4665-b55b-dc298984eb9b",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:47.222356",
+  "timeStamp" : "2026-04-26T20:52:48.399171400",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -203,9 +292,80 @@
     }
   } ]
 }, {
-  "uuid" : "ca9a7f03-b133-48eb-9c58-e7fe341c82d1",
+  "uuid" : "047899d2-658e-453b-b8df-60301fded354",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:52:58.349710700",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "09d65db9-9fb5-436b-aa87-164293b5a444",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:40:57.324328700",
+  "timeStamp" : "2026-04-26T20:52:58.365981300",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -219,71 +379,80 @@
     }
   } ]
 }, {
-  "uuid" : "3ade79ef-59de-43da-aff3-a89e41d32f1d",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:41:06.308341800",
+  "uuid" : "3d77ef2f-aece-4423-9b02-aa2082adade2",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:53:08.191714400",
   "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
     }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
     } ]
   } ]
 }, {
-  "uuid" : "7a5e2f01-f0e4-4d8d-8806-07962ef92b22",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:41:07.033597900",
-  "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
-    }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
-    }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
-    }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
-    } ]
-  } ]
-}, {
-  "uuid" : "3fb27e42-b6b3-4dd9-ad6f-263ee9f98e52",
+  "uuid" : "fd4fd623-a0dd-4025-b392-700fd06842a4",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:41:07.525947700",
+  "timeStamp" : "2026-04-26T20:53:08.428236300",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
@@ -297,40 +466,444 @@
     }
   } ]
 }, {
-  "uuid" : "1a295471-6226-437d-a8e0-125db4eb5a4c",
-  "source" : "itad",
-  "timeStamp" : "2026-04-26T20:41:17.296347200",
+  "uuid" : "a4a05b3a-5f01-4f47-826d-026617604dd8",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:53:18.263236700",
   "data" : [ {
-    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
-    "title" : "Resident Evil Requiem",
-    "achievements" : true,
-    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
-    "reviews" : [ {
-      "score" : 96,
-      "source" : "Steam",
-      "count" : 47550,
-      "url" : "https://store.steampowered.com/app/3764200/"
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
     }, {
-      "score" : 92,
-      "source" : "Metascore",
-      "count" : 23,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 94,
-      "source" : "Metacritic User Score",
-      "count" : 13997,
-      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
     }, {
-      "score" : 89,
-      "source" : "OpenCritic",
-      "count" : 208,
-      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
     } ]
   } ]
 }, {
-  "uuid" : "4d02bccd-0ab7-4b40-b92d-026d33bea45c",
+  "uuid" : "51b2b5ca-fbe6-4225-b80f-21c97ec483f7",
   "source" : "steam",
-  "timeStamp" : "2026-04-26T20:41:17.447534",
+  "timeStamp" : "2026-04-26T20:53:18.556914900",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "67352810-d0c5-43ef-ae2d-8e4c8f77db59",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:53:28.317111500",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "46fb0ba1-6945-430e-a9b2-b254ec669abc",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:53:28.575531300",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "496a374f-f7d4-4f66-b19b-c12496fb4be8",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:53:38.365655900",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "eac14753-048d-492d-9196-5b74420aa536",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:53:38.564962100",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "8ae7ff4b-a73b-4324-b64b-b08eff13c8e9",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:53:48.573546300",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "107f8836-e0dc-4cab-84b2-24d38ebd09a8",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:53:58.651455200",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "0941d0ba-c79b-4c97-be55-350598c7b214",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:54:07.776587400",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "c1a699af-8966-4e9d-955c-98ae8e489029",
+  "source" : "shop",
+  "timeStamp" : "2026-04-26T20:54:08.567911800",
+  "data" : [ {
+    "info" : {
+      "title" : "Resident Evil Requiem",
+      "steamAppID" : "3764200",
+      "thumb" : "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/64f506b9b6210df6055136e7017f2082957e5b22/capsule_231x87.jpg?t=1772587704"
+    },
+    "cheapestPriceEver" : {
+      "price" : "57.37",
+      "date" : 1772187641
+    },
+    "deals" : [ {
+      "storeID" : "23",
+      "price" : "57.37",
+      "retailPrice" : "69.99",
+      "savings" : "18.031147"
+    }, {
+      "storeID" : "3",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "15",
+      "price" : "57.39",
+      "retailPrice" : "69.99",
+      "savings" : "18.002572"
+    }, {
+      "storeID" : "27",
+      "price" : "62.99",
+      "retailPrice" : "69.99",
+      "savings" : "10.001429"
+    }, {
+      "storeID" : "29",
+      "price" : "63.69",
+      "retailPrice" : "69.99",
+      "savings" : "9.001286"
+    }, {
+      "storeID" : "21",
+      "price" : "64.99",
+      "retailPrice" : "69.99",
+      "savings" : "7.143878"
+    }, {
+      "storeID" : "2",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "11",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "30",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "25",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    }, {
+      "storeID" : "1",
+      "price" : "69.99",
+      "retailPrice" : "69.99",
+      "savings" : "0.000000"
+    } ]
+  } ]
+}, {
+  "uuid" : "1613056c-3040-46b1-ab94-5d5bcc8f79a0",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:54:08.729441200",
   "data" : [ {
     "type" : "game",
     "name" : "Resident Evil Requiem",
