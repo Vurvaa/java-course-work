@@ -1,1 +1,346 @@
-[ ]
+[ {
+  "uuid" : "12f84ab6-ea48-4b99-a0b7-0bc9598ee334",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:07.546866100",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "43ba31a2-7135-429e-a511-95015e82a165",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:40:07.737352600",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "d5650b22-c15f-48fe-b487-997bd16e56dd",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:40:16.905026300",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "85dd2da7-7ff1-495d-bc6b-33f970be8cf2",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:17.079230600",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "b2637bbb-6f00-4381-b258-8d69526f44b6",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:40:26.962292100",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "bb963b3e-b396-4730-86a9-bd0f0f56dabb",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:27.183114200",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "d817be88-a2ab-4c35-b8fc-6330fc471573",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:40:36.927491700",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "cf23e481-9809-4642-ad40-d09811c832f3",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:37.120103800",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "6dc9a820-f997-4b92-884a-7b9e82696dd8",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:47.222356",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "ca9a7f03-b133-48eb-9c58-e7fe341c82d1",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:40:57.324328700",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "3ade79ef-59de-43da-aff3-a89e41d32f1d",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:41:06.308341800",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "7a5e2f01-f0e4-4d8d-8806-07962ef92b22",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:41:07.033597900",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "3fb27e42-b6b3-4dd9-ad6f-263ee9f98e52",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:41:07.525947700",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+}, {
+  "uuid" : "1a295471-6226-437d-a8e0-125db4eb5a4c",
+  "source" : "itad",
+  "timeStamp" : "2026-04-26T20:41:17.296347200",
+  "data" : [ {
+    "id" : "01974812-da2a-7344-86a1-3fe329430a3a",
+    "title" : "Resident Evil Requiem",
+    "achievements" : true,
+    "tags" : [ "Survival Horror", "Zombies", "Horror", "Third-Person Shooter", "FPS" ],
+    "reviews" : [ {
+      "score" : 96,
+      "source" : "Steam",
+      "count" : 47550,
+      "url" : "https://store.steampowered.com/app/3764200/"
+    }, {
+      "score" : 92,
+      "source" : "Metascore",
+      "count" : 23,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/critic-reviews/?platform=pc"
+    }, {
+      "score" : 94,
+      "source" : "Metacritic User Score",
+      "count" : 13997,
+      "url" : "https://metacritic.com/game/resident-evil-requiem/user-reviews/?platform=pc"
+    }, {
+      "score" : 89,
+      "source" : "OpenCritic",
+      "count" : 208,
+      "url" : "https://opencritic.com/game/18716/resident-evil-requiem"
+    } ]
+  } ]
+}, {
+  "uuid" : "4d02bccd-0ab7-4b40-b92d-026d33bea45c",
+  "source" : "steam",
+  "timeStamp" : "2026-04-26T20:41:17.447534",
+  "data" : [ {
+    "type" : "game",
+    "name" : "Resident Evil Requiem",
+    "steam_appid" : 3764200,
+    "short_description" : "Requiem for the dead. Nightmare for the living. Prepare to escape death in a heart-stopping experience that will chill you to your core.",
+    "price_overview" : {
+      "currency" : "USD",
+      "initial" : 6999,
+      "discount_percent" : 0,
+      "final_formatted" : "$69.99"
+    }
+  } ]
+} ]
