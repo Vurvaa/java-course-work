@@ -362,6 +362,15 @@ class ServerTest {
     }
 
     @Test
+    void testConstructorDoesNotThrowWithValidOptions() {
+        AppOptions options = mock(AppOptions.class);
+
+        when(options.maxTaskNum()).thenReturn(1);
+
+        assertDoesNotThrow(() -> new Server(options));
+    }
+
+    @Test
     void testHandleApiCsv() {
         AppOptions options = mock(AppOptions.class);
         Connector connector = mock(Connector.class);
