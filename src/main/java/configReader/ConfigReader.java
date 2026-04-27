@@ -10,15 +10,20 @@ public class ConfigReader {
     private static final String PATH = "src/main/resources/config.yaml";
 
     private final ObjectMapper mapper;
+    private final String path;
 
     public ConfigReader() {
+        this(PATH);
+    }
+
+    public ConfigReader(String path) {
         this.mapper = new ObjectMapper(new YAMLFactory());
+        this.path = path;
     }
 
     public ConfigData readConfig() {
         try {
-            ConfigData config = mapper.readValue(new File(PATH), ConfigData.class);
-            return config;
+            return mapper.readValue(new File(path), ConfigData.class);
         } catch (IOException e) {
             throw new IllegalStateException("failed to read config from: " + PATH, e);
         }

@@ -32,6 +32,37 @@ public class Server implements ApiHandler {
         this.controller = new Controller(options.maxTaskNum(), this);
     }
 
+    Server(AppOptions options,
+           Connector connector,
+           DataTransformer transformer,
+           DataPusher pusher,
+           Controller controller) {
+
+        if (options == null) {
+            throw new NullPointerException("app options can not be null");
+        }
+        if (connector == null) {
+            throw new NullPointerException("connector can not be null");
+        }
+        if (transformer == null) {
+            throw new NullPointerException("transformer can not be null");
+        }
+        if (pusher == null) {
+            throw new NullPointerException("pusher can not be null");
+        }
+
+        this.options = options;
+        this.connector = connector;
+        this.transformer = transformer;
+        this.pusher = pusher;
+
+        if (controller == null) {
+            this.controller = new Controller(options.maxTaskNum(), this);
+        } else {
+            this.controller = controller;
+        }
+    }
+
     public void start() {
         if (!controller.isRunning()) {
             pusher.prepareFile(options.outputFormat(), options.isNewFile());

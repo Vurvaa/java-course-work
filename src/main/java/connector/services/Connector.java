@@ -6,13 +6,22 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.net.ConnectException;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 
 public class Connector {
     private final OkHttpClient client;
 
     public Connector() {
-        client = new OkHttpClient();
+        this(new OkHttpClient());
+    }
+
+    public Connector(OkHttpClient client) {
+        if (client == null) {
+            throw new IllegalArgumentException("client can not be null");
+        }
+
+        this.client = client;
     }
 
     public byte[] getResponseBody(String url) throws IOException {
