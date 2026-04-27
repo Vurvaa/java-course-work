@@ -3,10 +3,7 @@ package connector.concurrency;
 import models.service.config.NodeAPI;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class Controller {
@@ -20,7 +17,7 @@ public class Controller {
 
     private final ScheduledExecutorService scheduler;
     private final List<ScheduledFuture<?>> activeTasks;
-    private final Map<String, Long> lastPollTimeTable;
+    private final Map<String, Long> lastPollTimeMap;
     private final ApiHandler handler;
 
     private boolean running;
@@ -35,7 +32,7 @@ public class Controller {
         this.scheduler = Executors.newScheduledThreadPool(nThreads);
         this.handler = handler;
         this.activeTasks = new ArrayList<>();
-        this.lastPollTimeTable = new HashMap<>();
+        this.lastPollTimeMap = new HashMap<>();
         this.running = false;
     }
 
@@ -55,7 +52,7 @@ public class Controller {
         }
 
         activeTasks.clear();
-        lastPollTimeTable.clear();
+        lastPollTimeMap.clear();
 
         int id = 0;
         for (NodeAPI api : apis) {
@@ -67,12 +64,13 @@ public class Controller {
 
                         try {
                             handler.handleApi(api);
+                            markApiHandled(apiKey);
                         } catch (IOException e) {
-                            System.out.println("failed receiving a response from the api: " + e.getMessage());
-                            e.printStackTrace();
+                            markApiHandled(apiKey);
+                            System.out.printf("failed receiving a response from the api: %s - %s\n",
+                                                api.name(), e.getMessage());
                         } catch (Exception e) {
                             System.out.println("api processing failed: " + e.getMessage());
-                            e.printStackTrace();
                         }
                     },
                     0,
@@ -86,21 +84,25 @@ public class Controller {
         running = true;
     }
 
-    public boolean canHandleApi(String api, int intervalSeconds) {
-        if (intervalSeconds == 0)
-            return true;
-
+    private boolean canHandleApi(String api, int intervalSeconds) {
         long now = System.currentTimeMillis();
         long intervalMillis = intervalSeconds * 1000L;
 
-        synchronized (lastPollTimeTable) {
-            long last = lastPollTimeTable.getOrDefault(api, 0L);
+        synchronized (lastPollTimeMap) {
+            if (intervalSeconds != 0) {
+                long last = lastPollTimeMap.getOrDefault(api, 0L);
 
-            if (now - last < intervalMillis)
-                return false;
+                if (now - last < intervalMillis)
+                    return false;
+            }
 
-            lastPollTimeTable.put(api, now);
             return true;
+        }
+    }
+
+    private void markApiHandled(String api) {
+        synchronized (lastPollTimeMap) {
+            lastPollTimeMap.put(api, System.currentTimeMillis());
         }
     }
 
@@ -114,7 +116,7 @@ public class Controller {
             future.cancel(false);
 
         activeTasks.clear();
-        lastPollTimeTable.clear();
+        lastPollTimeMap.clear();
         running = false;
     }
 
@@ -128,7 +130,6 @@ public class Controller {
 
         } catch (InterruptedException e) {
             scheduler.shutdownNow();
-            Thread.currentThread().interrupt();
             System.out.println("shutdown program has been fail: " + e.getMessage());
         }
     }
