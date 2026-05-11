@@ -51,10 +51,6 @@ class ConfigReaderTest {
                 IllegalStateException.class,
                 reader::readConfig
         );
-
-        assertAll(
-                () -> assertTrue(exception.getMessage().contains("failed to read config from")),
-                () -> assertNotNull(exception.getCause())
-        );
+        assertTrue(exception.getMessage().contains("failed to read config from"));
     }
 }

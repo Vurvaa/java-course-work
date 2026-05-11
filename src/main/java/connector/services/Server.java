@@ -55,12 +55,8 @@ public class Server implements ApiHandler {
         this.connector = connector;
         this.transformer = transformer;
         this.pusher = pusher;
+        this.controller = controller;
 
-        if (controller == null) {
-            this.controller = new Controller(options.maxTaskNum(), this);
-        } else {
-            this.controller = controller;
-        }
     }
 
     public void start() {
@@ -177,9 +173,7 @@ public class Server implements ApiHandler {
                 }
             }
 
-        } catch (IOException e) {
-            System.err.println("error reading CSV preview: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException e) {
             System.err.println("CSV structure error: " + e.getMessage());
         }
     }

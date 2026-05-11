@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -336,5 +337,21 @@ class DataPusherTest {
         }
 
         file.delete();
+    }
+
+    @Test
+    void testHandleIOException() throws Exception {
+        Files.createDirectory(Path.of(CSV_FILE));
+
+        DataPusher dataPusher = new DataPusher();
+
+        assertDoesNotThrow(() -> dataPusher.pushCSV(
+                List.of(Map.of(
+                        "id", "1",
+                        "source", "test",
+                        "timestamp", "123"
+                )),
+                List.of("id", "source", "timestamp")
+        ));
     }
 }
