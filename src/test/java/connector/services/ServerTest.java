@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -69,6 +70,7 @@ class ServerTest {
         );
 
         ObjectMapper mapper = new ObjectMapper();
+
         try {
             mapper.writeValue(new File(JSON_FILE), List.of(model));
         } catch (IOException e) {
@@ -482,5 +484,59 @@ class ServerTest {
 
         verify(pusher, never()).pushJSON(any());
         verify(pusher, never()).pushCSV(anyList(), anyList());
+    }
+
+    @Test
+    void testHandleIOExceptionInJsonPreview() throws Exception {
+        Files.writeString(Path.of(JSON_FILE), "{ invalid json");
+
+        AppOptions options = mock(AppOptions.class);
+        Connector connector = mock(Connector.class);
+        DataTransformer transformer = mock(DataTransformer.class);
+        DataPusher pusher = mock(DataPusher.class);
+        Controller controller = mock(Controller.class);
+
+        when(controller.isRunning()).thenReturn(true);
+        when(options.viewFormat()).thenReturn("full");
+        when(options.outputFormat()).thenReturn("JSON");
+
+        Server server = new Server(
+                options,
+                connector,
+                transformer,
+                pusher,
+                controller
+        );
+
+        assertDoesNotThrow(server::stop);
+
+        verify(controller).stopPoll();
+    }
+
+    @Test
+    void testHandleIllegalArgumentExceptionInCsvPreview() throws Exception {
+        Files.writeString(Path.of(CSV_FILE), "id,name\n1,test\n");
+
+        AppOptions options = mock(AppOptions.class);
+        Connector connector = mock(Connector.class);
+        DataTransformer transformer = mock(DataTransformer.class);
+        DataPusher pusher = mock(DataPusher.class);
+        Controller controller = mock(Controller.class);
+
+        when(controller.isRunning()).thenReturn(true);
+        when(options.viewFormat()).thenReturn("api: testApi");
+        when(options.outputFormat()).thenReturn("CSV");
+
+        Server server = new Server(
+                options,
+                connector,
+                transformer,
+                pusher,
+                controller
+        );
+
+        assertDoesNotThrow(server::stop);
+
+        verify(controller).stopPoll();
     }
 }

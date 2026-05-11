@@ -8,19 +8,22 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class InteractiveRunnerTest {
-
-    private final InputStream oldIn = System.in;
+    private final InputStream originalIn = System.in;
+    private final PrintStream originalOut = System.out;
 
     @AfterEach
-    void returnSystemIn() {
-        System.setIn(oldIn);
+    void restoreSystemStreams() {
+        System.setIn(originalIn);
+        System.setOut(originalOut);
     }
 
     @ParameterizedTest
@@ -200,5 +203,229 @@ class InteractiveRunnerTest {
                 () -> assertEquals(4, options.maxTaskNum()),
                 () -> assertEquals(10, options.poolingInterval())
         );
+    }
+
+    @Test
+    void testPrintInvalidNumberForViewApi() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            1
+            0
+            1
+            1
+            2
+            2
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("Invalid number. Please choose from the list above."));
+    }
+
+    @Test
+    void testPrintMessageWhenViewApiInputIsNotNumber() {
+        ConfigData config = mockConfigWithOneApi();
+
+        String input = """
+            1
+            0
+            1
+            1
+            2
+            abc
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("Please enter a valid number."));
+    }
+
+    @Test
+    void testPrintMessageWhenMaxTaskNumberOutOfRange() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            1
+            0
+            1
+            1
+            1
+            20
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("Number should be in range 1 to 16"));
+    }
+
+    @Test
+    void testPrintMessageWhenPollingIntervalOutOfRange() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            1
+            0
+            1
+            1
+            1
+            2
+            5
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("Number should be in range 10 to 86400 seconds"));
+    }
+
+    @Test
+    void testPrintMessageWhenApiInputIsNotNumber() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            abc
+            1
+            0
+            1
+            1
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("enter a number from the list."));
+    }
+
+    @Test
+    void testPrintMessageWhenApiNumberIsInvalid() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            99
+            1
+            0
+            1
+            1
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("enter a valid number from the list."));
+    }
+
+    @Test
+    void testPrintMessageWhenApiAlreadySelected() {
+        ConfigData config = mockConfigWithOneApi();
+        String input = """
+            1
+            1
+            0
+            1
+            1
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("is already selected."));
+    }
+
+    @Test
+    void testPrintMessageWhenNoApiSelected() {
+        ConfigData config = mockConfigWithOneApi();
+
+        String input = """
+            0
+            1
+            0
+            1
+            1
+            1
+            2
+            10
+            """;
+
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        InteractiveRunner runner = new InteractiveRunner(config);
+
+        runner.registrAppOptions();
+
+        assertTrue(output.toString().contains("select at least one API."));
+    }
+
+    private ConfigData mockConfigWithOneApi() {
+        ConfigData config = mock(ConfigData.class);
+
+        NodeAPI api = mock(NodeAPI.class);
+        when(api.name()).thenReturn("testApi");
+        when(api.url()).thenReturn("http://test.com");
+
+        when(config.apis()).thenReturn(List.of(api));
+
+        return config;
     }
 }

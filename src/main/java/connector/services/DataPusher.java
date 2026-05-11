@@ -39,9 +39,6 @@ public class DataPusher {
         } catch (IOException e) {
             System.out.println("JSON error: I/O failure while saving data: " + e.getMessage());
             e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("JSON error: An unexpected system error occurred: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -63,7 +60,7 @@ public class DataPusher {
             allRows.addAll(newRows);
 
             writeCSV(allRows, finalHeaders);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("CSV error: failed to push data: " + e.getMessage());
             e.printStackTrace();
         }
@@ -99,13 +96,11 @@ public class DataPusher {
         return new ArrayList<>(result);
     }
 
-    private CsvContent readCsvContent() {
+    private CsvContent readCsvContent() throws IOException {
         List<Map<String, String>> rows = new ArrayList<>();
         List<String> headers = new ArrayList<>();
 
         File file = new File(CSV_FILE);
-        if (!file.exists() || file.length() == 0)
-            return new CsvContent(headers, rows);
 
         try (Reader reader = new FileReader(file);
              CSVParser parser = CSVFormat.DEFAULT.builder()
@@ -118,19 +113,12 @@ public class DataPusher {
 
             for (CSVRecord record : parser)
                 rows.add(new HashMap<>(record.toMap()));
-
-        } catch (IOException e) {
-            System.err.println("CSV error with reading: " + e.getMessage());
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.err.println("CSV unexpected error: " + e.getMessage());
-            e.printStackTrace();
         }
 
         return new CsvContent(headers, rows);
     }
 
-    private void writeCSV(List<Map<String, String>> allRows, List<String> headers) {
+    private void writeCSV(List<Map<String, String>> allRows, List<String> headers) throws IOException {
         try (FileWriter out = new FileWriter(CSV_FILE, false);
              CSVPrinter printer = new CSVPrinter(
                      out,
@@ -147,9 +135,6 @@ public class DataPusher {
 
                 printer.printRecord(record);
             }
-        } catch (IOException e) {
-            System.err.println("CSV error with writing: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
